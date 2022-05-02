@@ -21,7 +21,7 @@ public class Orderconfirmation extends Base{
 	WebElement confirmationMsg;
 	
 	public Orderconfirmation() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	

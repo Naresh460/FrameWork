@@ -26,14 +26,14 @@ public class LoginPage extends Base {
 	WebElement createAccountBtn;
 	
 	public LoginPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
-	public HomePage login(String uname, String pword) {
+	public HomePage login(String uname, String pword)  {
 		action.type(username, uname);
 		action.type(password, pword);
-		action.click(driver, submitBtn);
+		action.click(getDriver(), submitBtn);
 		return new HomePage();
 		
 	}
@@ -41,14 +41,14 @@ public class LoginPage extends Base {
 	public AddressPage login2(String uname, String pword) {
 		action.type(username, uname);
 		action.type(password, pword);
-		action.click(driver, submitBtn);
+		action.click(getDriver(), submitBtn);
 		return new AddressPage();
 		
 	}
 	public AccountCreationPage createNewAccount(String emailaddress) {
 		
 		action.type(emailforNewaccount, emailaddress);
-		action.click(driver, createAccountBtn);
+		action.click(getDriver(), createAccountBtn);
 		return new AccountCreationPage();
 	}
 	

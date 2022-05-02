@@ -21,16 +21,16 @@ ActionClass action = new ActionClass();
 	WebElement firstproduct;
 	
 	public SearchResultsPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
 	public boolean isProductAvailable() {		
-		return action.isDisplayed(driver, firstproduct);
+		return action.isDisplayed(getDriver(), firstproduct);
 	}
 	
 	public AddtoCartPage clickonproduct() {		
-		action.click(driver, firstproduct);
+		action.click(getDriver(), firstproduct);
 		return new AddtoCartPage();
 }
 }

@@ -21,12 +21,12 @@ public class PaymentPage extends Base{
 	WebElement selectPayment;
 	
 	public PaymentPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
 	public OrderSummaryPage clickonPayment() {
-		action.click(driver, selectPayment);
+		action.click(getDriver(), selectPayment);
 		return new OrderSummaryPage();
 		
 	}

@@ -28,27 +28,27 @@ public class IndexPage extends Base {
 	WebElement signinBtn;
 
 	public IndexPage(){
-		PageFactory.initElements(driver, this);	
+		PageFactory.initElements(getDriver(), this);	
 	}	
 
 	public boolean getlogo() {
-		return action.isDisplayed(driver, logo);
+		return action.isDisplayed(getDriver(), logo);
 	}
 
 
 	public LoginPage clickonsign() {
-		action.click(driver, signinBtn);
+		action.click(getDriver(), signinBtn);
 		return new LoginPage();
 	}  
 
 	public SearchResultsPage searchBox(String productname) {
 		action.type(SearchBox, productname);
-		action.click(driver, searchBtn);
+		action.click(getDriver(), searchBtn);
 		return new SearchResultsPage();		
 	}
 
 	public String verifyTitle() {		
-		String title = driver.getTitle();
+		String title = getDriver().getTitle();
 		return title;
 	}
 

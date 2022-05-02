@@ -20,13 +20,13 @@ public class AddressPage extends Base {
 	WebElement proceedToCheck;
 	
 	public AddressPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
 	public ShippingPage proceedTocheckout() {
 		
-		action.JSClick(driver, proceedToCheck);
+		action.JSClick(getDriver(), proceedToCheck);
 		return new ShippingPage();
 	}
 

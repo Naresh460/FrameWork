@@ -21,12 +21,12 @@ public class OrderSummaryPage  extends Base{
 	WebElement clickonConfirm;
 	
 	public OrderSummaryPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
 	public Orderconfirmation clickonConfirm() {
-		action.click(driver, clickonConfirm);
+		action.click(getDriver(), clickonConfirm);
 		return new Orderconfirmation();
 		
 	}

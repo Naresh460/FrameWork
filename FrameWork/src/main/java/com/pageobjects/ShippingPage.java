@@ -24,16 +24,16 @@ public class ShippingPage extends Base{
 	WebElement proceedtoCheckout;
 	
 	public ShippingPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
 	public void clickcheckBox() {
-		action.click(driver, checkBox);
+		action.click(getDriver(), checkBox);
 	}
 	
 	public PaymentPage proceedtoCheckOut() {
-		action.click(driver, proceedtoCheckout);
+		action.click(getDriver(), proceedtoCheckout);
 		return new PaymentPage();
 	}
 }

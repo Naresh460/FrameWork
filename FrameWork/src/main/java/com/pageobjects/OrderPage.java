@@ -18,7 +18,7 @@ import com.baseclass.Base;
 public class OrderPage extends Base {
 	ActionClass action = new ActionClass();
 	
-	@FindBy(xpath="//span[@id=\"product_price_5_22_0\"]/span")
+	@FindBy(xpath="//td[@class=\"cart_unit\"]/span/span")
 	WebElement unitprice;
 	
 	@FindBy(id="total_price")
@@ -28,7 +28,7 @@ public class OrderPage extends Base {
 	WebElement proccedToCheckOut;
 	
 	public OrderPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
@@ -47,7 +47,7 @@ public class OrderPage extends Base {
 	}
 	
 	public LoginPage clickOnCheckOut() throws Throwable {
-		action.click(driver, proccedToCheckOut);
+		action.click(getDriver(), proccedToCheckOut);
 		return new LoginPage();
 	}
 

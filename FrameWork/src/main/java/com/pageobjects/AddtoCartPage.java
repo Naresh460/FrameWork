@@ -26,14 +26,14 @@ public class AddtoCartPage extends Base {
 	@FindBy(name="Submit")
 	WebElement addtoCartBtn;
 	
-	@FindBy(xpath="//*[@id=\"layer_cart\"]/div[1]/div[1]/h2/i")
+	@FindBy(xpath="//div[@class=\"layer_cart_product col-xs-12 col-md-6\"]/h2")
 	WebElement cartSuccessMessage;
 	
 	@FindBy(xpath="//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")
 	WebElement clicktoCheckout;
 	
 	public AddtoCartPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 	}
 	
@@ -46,19 +46,20 @@ public class AddtoCartPage extends Base {
 		action.selectByVisibleText(size, sizeoftheproduct);		
 	}
 	
-	public void clickAddtoCart() {
-		action.click(driver, addtoCartBtn);
-		
+	public void clickAddtoCart() throws InterruptedException {
+		action.click(getDriver(), addtoCartBtn);
+		Thread.sleep(3000);
 	}
 	
 	public boolean validateAddtoCart() {
-		return action.isDisplayed(driver, cartSuccessMessage);
+		action.implicitWait(getDriver(), 10);
+		return action.isDisplayed(getDriver(), cartSuccessMessage);
 		
 	}
 	
 	public OrderPage clicktoCheckout() {		
-		//action.click(driver, clicktoCheckout);
-		action.JSClick(driver, clicktoCheckout);
+		action.implicitWait(getDriver(), 10);
+		action.click(getDriver(), clicktoCheckout);
 		return new OrderPage();
 	}
 	

@@ -1,7 +1,7 @@
 package com.actiondriver;
 
 import java.io.File;
-
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -119,7 +119,7 @@ public class ActionClass  {
 			flag = ele.isDisplayed();
 			ele.clear();
 			ele.sendKeys(text);
-			// logger.info("Entered text :"+text);
+			//logger.info("Entered text :"+text);
 			flag = true;
 		} catch (Exception e) {
 			System.out.println("Location Not found");
@@ -673,8 +673,8 @@ public class ActionClass  {
 		}catch(Exception e) {
 		}
 	}
-	public void implicitWait(WebDriver driver, int timeOut) {
-		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+	public void implicitWait(WebDriver driver, long timeOut) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeOut));
 	}
 	public void explicitWait(WebDriver driver, WebElement element, Duration timeOut ) {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
@@ -683,21 +683,22 @@ public class ActionClass  {
 	public void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
 	}
-	public String screenShot(WebDriver driver, String filename) {
+	public String screenShot(WebDriver driver, String filename) throws IOException {
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + filename + "_" + dateName + ".png";
-
-		try {
-			FileUtils.copyFile(source, new File(destination));
-		} catch (Exception e) {
-			e.getMessage();
-		}
+		File destination = new File("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\Screenshots\\" + filename + "_" + dateName + ".png");
+		FileUtils.copyFile(source, destination);
+		return destination.getAbsolutePath();
+//		try {
+//			FileUtils.copyFile(source, new File(destination));
+//		} catch (Exception e) {
+//			e.getMessage();
+//		}
 		// This new path for jenkins
-		String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
-				+ dateName + ".png";
-		return newImageString;
+//		String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
+//				+ dateName + ".png";
+//		return newImageString;
 	}
 	public String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());

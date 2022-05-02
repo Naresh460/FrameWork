@@ -12,7 +12,7 @@ import com.baseclass.Base;
 
 /**
  * @author nbusireddy
- * Here we have to verify the Whishlist and OrderHistory Details
+ * Here we have to verify the Whishlist and OrderHistory Details visible or not
  */
 public class HomePage extends Base {
 	ActionClass action = new ActionClass();
@@ -23,16 +23,27 @@ public class HomePage extends Base {
 	@FindBy(xpath="//span[text()='Order history and details']")
 	WebElement orderHistoryDetailsBtn;
 	
+	@FindBy(xpath="//div[@id=\"columns\"]/div[1]/span[2]")
+	WebElement myAccountHeader;
+	
+	
+	
 	public HomePage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
 	public boolean validateWhishlist() {
-		return action.isDisplayed(driver, whishlistBtn);
+		return action.isDisplayed(getDriver(), whishlistBtn);
 	}
 	
 	public boolean validateOrderHistoryBtn() {		
-		return action.isDisplayed(driver, orderHistoryDetailsBtn);
+		return action.isDisplayed(getDriver(), orderHistoryDetailsBtn);
+	}
+	
+	public boolean verifyAccount() {
+		boolean message = action.isDisplayed(getDriver(), myAccountHeader);
+		return message;
+		
 	}
 }
