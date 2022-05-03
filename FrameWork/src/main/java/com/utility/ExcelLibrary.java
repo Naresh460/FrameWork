@@ -147,11 +147,11 @@ public class ExcelLibrary {
 				
 			
 				sheet = workbook.getSheetAt(index);
-				System.out.println("Rownum at Libarary-->" +rowNum);
-				row = sheet.getRow(rowNum);
+				
+				row = sheet.getRow(rowNum-1);
 				if(row==null)
 					return "";
-				System.out.println("Comumn number-->" +colNum);
+				
 				cell = row.getCell(colNum);
 				if(cell==null)
 					return "";

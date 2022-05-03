@@ -26,23 +26,20 @@ public class DataProviders {
 		int rows = obj.getRowCount("Credentials");
 		// Total Columns
 		int column = obj.getColumnCount("Credentials");
-		System.out.println("coumn count-->"+column);
 		int actRows = rows - 1;
-		System.out.println("Row count-->"+actRows);
+
 		Object[][] data = new Object[actRows][column];
 
 		for (int i = 0; i < actRows; i++) {
 			for (int j = 0; j < column; j++) {
-				data[i][j] = obj.getCellData("Credentials", j, i + 1);
-				for (Object[] objects : data) {
-					System.out.println("Data from dataprovider-->"  +Arrays.toString(objects));
-				}
+				data[i][j] = obj.getCellData("Credentials", j, i + 2);
 			}
 		}
 		return data;
 	}
 	
 	
+	//Class --> AccountCreationPage  Test Case--> verifyCreateAccountPageTest	
 	//Class --> AccountCreationPage  Test Case--> verifyCreateAccountPageTest	
 		@DataProvider(name = "email")
 		public Object[][] getEmail() {
@@ -56,12 +53,13 @@ public class DataProviders {
 
 			for (int i = 0; i < actRows; i++) {
 				for (int j = 0; j < column; j++) {
-					data[i][j] = obj.getCellData("Email", j, i + 1);
+					data[i][j] = obj.getCellData("Email", j, i + 2);
 				}
 			}
 			return data;
 		}
 		
+		//Class --> AddToCartPageTest, EndToEndTest,  Test Case--> addToCartTest, endToEndTest	
 		@DataProvider(name = "getProduct")
 		public Object[][] getProduct() {
 			// Totals rows count
@@ -74,11 +72,12 @@ public class DataProviders {
 
 			for (int i = 0; i < actRows; i++) {
 				for (int j = 0; j < column; j++) {
-					data[i][j] = obj.getCellData("ProductDetails", j, i + 1);
+					data[i][j] = obj.getCellData("ProductDetails", j, i + 2);
 				}
 			}
 			return data;
 		}
+
 		
 		@DataProvider(name = "searchProduct")
 		public Object[][] getProductPrice() {
@@ -97,6 +96,8 @@ public class DataProviders {
 			}
 			return data;
 		}
+		
+		
 		@DataProvider(name = "newAcountDetailsData")
 		public Object[][] accountCreation() {
 
@@ -111,8 +112,10 @@ public class DataProviders {
 			for (int i = 0; i < actRows; i++) {
 				Map<String, String> hashMap = new HashMap<>();
 				for (int j = 0; j < column; j++) {
-					hashMap.put(obj.getCellData("AccountCreationData", j, 1),
-							obj.getCellData("AccountCreationData", j, i + 2));
+					hashMap.put(obj.getCellData("AccountCreationData", j, 1),  //key will take 0-row 0-column--Note that here i=1 but celldata method it will sub to -1
+							obj.getCellData("AccountCreationData", j, i + 2));  //value will be stored as per the rows and coumns
+					 
+					System.out.println(hashMap);
 				}
 				data[i][0]=hashMap;
 			}

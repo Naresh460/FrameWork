@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import com.baseclass.Base;
 import com.dataProvider.DataProviders;
 import com.pageobjects.AccountCreationPage;
+import com.pageobjects.HomePage;
 import com.pageobjects.IndexPage;
 import com.pageobjects.LoginPage;
 
@@ -23,36 +24,47 @@ import com.pageobjects.LoginPage;
  *
  */
 public class AccountCreationTest extends Base{
-	
+
 	IndexPage indexpage;
 	LoginPage loginpage;
+	HomePage homepage;
 	AccountCreationPage accountcreationpage;
 
-//	@Parameters({"browserrname","Smoke","Sanity"})
-//	@BeforeMethod 
-//	public void browsersetup(String browserrname) {
-//		launchApp(browserrname);		
-//	}
-//	
-//	@AfterTest
-//	public void teardown() {
-//		getDriver().quit();
+
+//
+//	@Test (dataProvider = "email" , dataProviderClass = DataProviders.class)
+//	public void navigatetoCreateAccount(String email) {
+//		indexpage = new IndexPage();		
+//		loginpage = indexpage.clickonsign();
+//		accountcreationpage = loginpage.createNewAccount(email);
+//		boolean result = accountcreationpage.createAccountHeader();
+//		Assert.assertTrue(result);
+//
+//
 //	}
 	
-	@Test (dataProvider = "email" , dataProviderClass = DataProviders.class)
-	public void navigatetoCreateAccount(String email) {
+	
+	@Test(dataProvider = "newAcountDetailsData", dataProviderClass = DataProviders.class)
+	public void createAccount(HashMap<String, String> hashMapValue) throws Throwable {
 		indexpage = new IndexPage();		
 		loginpage = indexpage.clickonsign();
-		accountcreationpage = loginpage.createNewAccount(email);
-		boolean result = accountcreationpage.createAccountHeader();
-		Assert.assertTrue(result);
-		
-		
-	}
-	public void createAccount(HashMap<String, String> hasMapValue) {
-		indexpage = new IndexPage();		
-	loginpage = indexpage.clickonsign();
-	accountcreationpage = loginpage.createNewAccount(hasMapValue.get("Email"));
-//	accountcreationpage.
+		accountcreationpage = loginpage.createNewAccount(hashMapValue.get("Email"));
+		Thread.sleep(3000);
+		accountcreationpage.createAccount(hashMapValue.get("Gender"),
+				hashMapValue.get("FirstName"),
+				hashMapValue.get("LastName"),
+				hashMapValue.get("SetPassword"),
+				hashMapValue.get("Day"),
+				hashMapValue.get("Month"),
+				hashMapValue.get("Year"),
+				hashMapValue.get("Company"),
+				hashMapValue.get("Address"),
+				hashMapValue.get("City"),
+				hashMapValue.get("State"),
+				hashMapValue.get("Zipcode"),
+				hashMapValue.get("Country"),
+				hashMapValue.get("MobilePhone"));
+		homepage= accountcreationpage.validateRegistration();			
+
 	}
 }
