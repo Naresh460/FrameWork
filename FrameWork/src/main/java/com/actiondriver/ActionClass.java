@@ -687,7 +687,7 @@ public class ActionClass  {
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		File destination = new File("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\ExtentReports\\" + filename + "_" + dateName + ".png");
+		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");
 		FileUtils.copyFile(source, destination);
 		return destination.getAbsolutePath();
 //		try {

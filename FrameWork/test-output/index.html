@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods,   4 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -104,17 +104,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.testcases.HomePageTest" class="method navigator-link" hash-for-method="verifyOrderHistory">verifyOrderHistory</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.testcases.Indexpagetest" class="method navigator-link" hash-for-method="verifyTitle">verifyTitle</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.testcases.HomePageTest" class="method navigator-link" hash-for-method="verifyWhishList">verifyWhishList</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -134,28 +124,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.testcases.HomePageTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyOrderHistory">
-                  </a> <!-- verifyOrderHistory -->
-                  <span class="method-name">verifyOrderHistory</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyWhishList">
-                  </a> <!-- verifyWhishList -->
-                  <span class="method-name">verifyWhishList</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-passed -->
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -188,8 +156,11 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;parameter name=&quot;browserrname&quot; value=&quot;Chrome&quot;/&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.utility.ITestListnerclass&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;browserrname&quot; value=&quot;Chrome&quot;/&gt;
     &lt;groups&gt;
       &lt;run&gt;
         &lt;include name=&quot;Smoke&quot;/&gt;
@@ -197,7 +168,6 @@
     &lt;/groups&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.testcases.Indexpagetest&quot;/&gt;
-      &lt;class name=&quot;com.testcases.HomePageTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -211,7 +181,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (2 classes)</span>
+                <span class="test-name">Test (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -225,15 +195,7 @@
               <span class="test-group-name">Smoke</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifyOrderHistory</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
                 <span class="method-in-group-name">verifyTitle</span>
-                <br/>
-              </div> <!-- method-in-group -->
-              <div class="method-in-group">
-                <span class="method-in-group-name">verifyWhishList</span>
                 <br/>
               </div> <!-- method-in-group -->
               <div class="method-in-group">
@@ -257,28 +219,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(4);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyOrderHistory')
-data.setCell(0, 2, 'com.testcases.HomePageTest')
-data.setCell(0, 3, 10562);
+data.setCell(0, 1, 'verifylogo')
+data.setCell(0, 2, 'com.testcases.Indexpagetest')
+data.setCell(0, 3, 216);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyWhishList')
-data.setCell(1, 2, 'com.testcases.HomePageTest')
-data.setCell(1, 3, 7099);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'verifyTitle')
-data.setCell(2, 2, 'com.testcases.Indexpagetest')
-data.setCell(2, 3, 1117);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifylogo')
-data.setCell(3, 2, 'com.testcases.Indexpagetest')
-data.setCell(3, 3, 820);
+data.setCell(1, 1, 'verifyTitle')
+data.setCell(1, 2, 'com.testcases.Indexpagetest')
+data.setCell(1, 3, 151);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 19 seconds</span>
+              <span class="suite-total-time">Total running time: 367 ms</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -293,16 +247,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.testcases.HomePageTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">loadConfig</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -313,60 +260,37 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.testcases.Indexpagetest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">loadConfig(org.testng.TestRunner@5db3d57c)</span>
+                <span class="method-name">loadConfig(org.testng.TestRunner@6a3fbcb1)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
                 <span class="method-name">browsersetup(Chrome, [TestResult name={null} status=CREATED method=Indexpagetest.verifyTitle()[pri:0, instance:co...)</span>
-                <span class="method-start">1241 ms</span>
+                <span class="method-start">936 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyTitle</span>
-                <span class="method-start">55691 ms</span>
+                <span class="method-start">15844 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">56814 ms</span>
+                <span class="method-start">16634 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">browsersetup(Chrome, [TestResult name={null} status=CREATED method=Indexpagetest.verifylogo()[pri:0, instance:com...)</span>
-                <span class="method-start">57908 ms</span>
+                <span class="method-start">17091 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifylogo</span>
-                <span class="method-start">78573 ms</span>
+                <span class="method-start">31422 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">79395 ms</span>
+                <span class="method-start">32271 ms</span>
               </div> <!-- configuration-method after -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.testcases.HomePageTest</div> <!-- chronological-class-name -->
-              <div class="configuration-method before">
-                <span class="method-name">browsersetup(Chrome, [TestResult name={null} status=CREATED method=HomePageTest.verifyOrderHistory()[pri:0, insta...)</span>
-                <span class="method-start">80646 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifyOrderHistory</span>
-                <span class="method-start">93465 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">104032 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">browsersetup(Chrome, [TestResult name={null} status=CREATED method=HomePageTest.verifyWhishList()[pri:0, instance...)</span>
-                <span class="method-start">104678 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifyWhishList</span>
-                <span class="method-start">117284 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">124387 ms</span>
-              </div> <!-- configuration-method after -->
+              <div class="configuration-suite after">
+                <span class="method-name">generateReports</span>
+                <span class="method-start">32837 ms</span>
+              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

@@ -90,10 +90,10 @@ public class Base {
 		prop = new Properties();
 		FileInputStream ip = new FileInputStream("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\configuration\\prop.properties");
 		prop.load(ip);
-String docTitile=context.getCurrentXmlTest().getName();
+         String docTitile=context.getCurrentXmlTest().getName();
 		filename_report = context.getSuite().getName();
 		reprtengine = new ExtentReports();			
-		sparkreport_all = new ExtentSparkReporter("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\ExtentReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html");
+		sparkreport_all = new ExtentSparkReporter(System.getProperty("user.dir")+"\\ExtentReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html");
 		sparkreport_all.config().setDocumentTitle(docTitile);
 		sparkreport_all.config().setReportName("Naresh");
 		sparkreport_all.loadXMLConfig("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\extentReport-config.xml");
@@ -102,10 +102,10 @@ String docTitile=context.getCurrentXmlTest().getName();
 
 	}
 
-	@AfterSuite	
+	@AfterSuite	(groups = {"Regression","Sanity","Smoke"})
 	public void generateReports() throws IOException {		
 		reprtengine.flush();
-		Desktop.getDesktop().browse(new File("C:\\Users\\nbusireddy\\Selenium\\git1\\FrameWork\\ExtentReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html").toURI());
+		Desktop.getDesktop().browse(new File(System.getProperty("user.dir")+"\\ExtentReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html").toURI());
 	}
 
 		
