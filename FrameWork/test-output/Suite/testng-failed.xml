@@ -6,34 +6,20 @@
     <listener class-name="com.utility.ITestListnerclass"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="Smoke"/>
+      </run>
+    </groups>
     <classes>
-      <class name="com.testcases.EndtoEndTest">
+      <class name="com.testcases.Indexpagetest">
         <methods>
           <include name="browsersetup"/>
           <include name="loadConfig"/>
-          <include name="endToendTest"/>
+          <include name="verifylogo"/>
           <include name="tearDown"/>
-          <include name="generateReports"/>
         </methods>
-      </class> <!-- com.testcases.EndtoEndTest -->
-      <class name="com.testcases.OrderPageTest">
-        <methods>
-          <include name="browsersetup"/>
-          <include name="verifyOrderPage"/>
-          <include name="loadConfig"/>
-          <include name="tearDown"/>
-          <include name="generateReports"/>
-        </methods>
-      </class> <!-- com.testcases.OrderPageTest -->
-      <class name="com.testcases.AddtoCarttest">
-        <methods>
-          <include name="browsersetup"/>
-          <include name="loadConfig"/>
-          <include name="verifyAddTocart"/>
-          <include name="tearDown"/>
-          <include name="generateReports"/>
-        </methods>
-      </class> <!-- com.testcases.AddtoCarttest -->
+      </class> <!-- com.testcases.Indexpagetest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
