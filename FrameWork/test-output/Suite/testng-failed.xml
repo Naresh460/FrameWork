@@ -6,20 +6,16 @@
     <listener class-name="com.utility.ITestListnerclass"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
-    <groups>
-      <run>
-        <include name="Smoke"/>
-      </run>
-    </groups>
     <classes>
-      <class name="com.testcases.Indexpagetest">
+      <class name="com.testcases.AccountCreationTest">
         <methods>
           <include name="browsersetup"/>
+          <include name="createAccount" invocation-numbers="0"/>
           <include name="loadConfig"/>
-          <include name="verifylogo"/>
           <include name="tearDown"/>
+          <include name="generateReports"/>
         </methods>
-      </class> <!-- com.testcases.Indexpagetest -->
+      </class> <!-- com.testcases.AccountCreationTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

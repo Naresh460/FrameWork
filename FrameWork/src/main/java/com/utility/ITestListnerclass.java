@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.HasCapabilities;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -16,44 +17,45 @@ public class ITestListnerclass extends Base implements ITestListener{
 	ActionClass action= new ActionClass();
 	String path;
 	
+	
 	@Override
 	public void onTestStart(ITestResult result) {
 		
 		Capabilities Browsername = ((HasCapabilities) getDriver()).getCapabilities();
-		String Device=Browsername.getBrowserName()+""+Browsername.getBrowserVersion();
-		
-		extenttest=reprtengine.createTest(result.getName());        //use ItestContext to get the name of test from xml file or 
-		extenttest.assignAuthor("reddy");
-		extenttest.assignCategory(Device);
+		String Device=Browsername.getBrowserName()+""+Browsername.getBrowserVersion();		
+		extenttest.set(reprtengine.createTest(result.getName()));        //use ItestContext to get the name of test from xml file or 
+		extenttest.get().assignAuthor("Naresh");
+		extenttest.get().assignCategory(Device);
 	}
 	
 	@Override
-	public void onTestFailure(ITestResult result) {		
-	
+	public void onTestFailure(ITestResult result) {	
+		String path=null;
+		try {
+			path = screenShot(result.getMethod().getMethodName());
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
-			try {
-				path = action.screenShot(getDriver(), result.getMethod().getMethodName());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			extenttest.fail("This Method is Failed", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
-			extenttest.fail(result.getThrowable());
+		//extenttest.get().addScreenCaptureFromPath((path));
+		extenttest.get().fail(result.getMethod().getMethodName()+"-->"+"Method is Failed",MediaEntityBuilder.createScreenCaptureFromPath(path).build());
 			
 		
 	}
 
 	@Override
-	public void onTestSuccess(ITestResult result) {     //screenshot for pass test
+	public  void onTestSuccess(ITestResult result) {     //screenshot for pass test
+		String path=null;
+		try {
+			path = screenShot(result.getMethod().getMethodName());
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		
-			
-			try {
-				path = action.screenShot(getDriver(), result.getMethod().getMethodName());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			extenttest.pass("Methid is Passed", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+		//extenttest.get().addScreenCaptureFromPath((path));
+		extenttest.get().pass(result.getMethod().getMethodName()+"-->"+"Methid is Passed",MediaEntityBuilder.createScreenCaptureFromPath(path).build());
 			
 		
 

@@ -41,12 +41,15 @@ public class Base {
 	public static Properties prop;
 	public static ExtentReports reprtengine;
 	static ExtentSparkReporter sparkreport_all;
-	public static ExtentTest extenttest; 
+	public static ThreadLocal<ExtentTest> extenttest = new ThreadLocal<>();
+	//public static ExtentTest extenttest; 
 	DateFormat dateFormat_report = new SimpleDateFormat("dd-mm-yyyy h-m-s");
 	Date date_report = new Date();
 	String filename_report;
 	static String subFolder;
+	
 	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+	 
 
 	public static WebDriver getDriver() {
 		// Get Driver from threadLocalmap
@@ -62,16 +65,14 @@ public class Base {
 		case "Chrome":
 			WebDriverManager.chromedriver().setup();
 			driver.set(new ChromeDriver());
+				
 			break;
 		case "FireFox":
 			WebDriverManager.firefoxdriver().setup();
 			driver.set(new FirefoxDriver());
 			break; 
 		}
-//Capabilities Browsername = ((HasCapabilities) getDriver()).getCapabilities();
-//String Device=Browsername.getBrowserName()+""+Browsername.getBrowserVersion();
-//		
-//	extenttest.assignCategory(Device);
+	
 		getDriver().get( prop.getProperty("url"));		
 	}
 	
@@ -79,7 +80,8 @@ public class Base {
 
 	@AfterMethod(groups = {"Regression","Sanity","Smoke"})
 	public void tearDown() {
-		getDriver().quit();		
+		getDriver().quit();
+		
 	}
 	
 	
@@ -110,4 +112,20 @@ public class Base {
 
 		
 
-}
+	public String screenShot(String filename) throws IOException {
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot takesScreenshot = (TakesScreenshot) getDriver();
+		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");	
+		
+		try {
+			FileUtils.copyFile(source, destination);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		// This new path for jenkins
+		//String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
+	   // return newImageString;
+	return destination.getAbsolutePath();
+	
+}}

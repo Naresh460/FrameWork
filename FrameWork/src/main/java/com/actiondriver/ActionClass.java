@@ -683,23 +683,23 @@ public class ActionClass  {
 	public void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
 	}
-	public String screenShot(WebDriver driver, String filename) throws IOException {
-		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");
-		
-		
-		try {
-			FileUtils.copyFile(source, destination);
-		} catch (Exception e) {
-			e.getMessage();
-		}
-		// This new path for jenkins
-		String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
-	    return newImageString;
-	//	return destination.getAbsolutePath();
-	}
+//	public String screenShot(WebDriver driver, String filename) throws IOException {
+//		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+//		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+//		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+//		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");
+//		
+//		
+//		try {
+//			FileUtils.copyFile(source, destination);
+//		} catch (Exception e) {
+//			e.getMessage();
+//		}
+//		// This new path for jenkins
+//		//String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
+//	   // return newImageString;
+//	return destination.getAbsolutePath();
+//	}
 	public String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
