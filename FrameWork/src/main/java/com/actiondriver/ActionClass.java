@@ -688,17 +688,17 @@ public class ActionClass  {
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
 		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");
-		FileUtils.copyFile(source, destination);
-		return destination.getAbsolutePath();
-//		try {
-//			FileUtils.copyFile(source, new File(destination));
-//		} catch (Exception e) {
-//			e.getMessage();
-//		}
+		
+		
+		try {
+			FileUtils.copyFile(source, destination);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		// This new path for jenkins
-//		String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
-//				+ dateName + ".png";
-//		return newImageString;
+		String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
+	    return newImageString;
+	//	return destination.getAbsolutePath();
 	}
 	public String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
