@@ -7,11 +7,19 @@
 	</listeners>
 	<test name="Test">
 
+<<<<<<< HEAD
 		<groups>
 			<run>
 				<include name="Smoke"></include>
 			</run>
 		</groups>
+=======
+<groups>
+<run>
+<include name="Smoke"></include>
+</run>
+</groups>
+>>>>>>> branch 'master' of https://github.com/Naresh460/FrameWork.git
 		<classes>
 			<class name="com.testcases.HomePageTest" />
 			<class name="com.testcases.AddtoCarttest" />
